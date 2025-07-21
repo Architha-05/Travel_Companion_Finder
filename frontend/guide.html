@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourist Places Finder</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h2>Find Tourist Places</h2>
+    
+    <div id="search-container">
+        <input type="text" id="location" placeholder="Enter Location">
+        <button onclick="getPlaces()">Search</button>
+    </div>
+
+    <div id="results"></div>
+
+    <script>
+        function getPlaces() {
+            var location = document.getElementById("location").value;
+            fetch("http://localhost:5000/get_places", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ location: location })
+            })
+            .then(response => response.json())
+            .then(data => {
+                var output = "<h3>Tourist Places:</h3>";
+                data.forEach(place => {
+                    output += `
+                        <div class="place-card">
+                            <p><strong>${place.name}</strong></p>
+                            <p>⭐ Rating: ${place.rating}</p>
+                            <p><strong>📌 Address:</strong> ${place.address}</p>
+                        </div>
+                    `;
+                });
+                document.getElementById("results").innerHTML = output;
+            });
+        }
+    </script>
+</body>
+</html>
