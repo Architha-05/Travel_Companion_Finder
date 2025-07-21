@@ -18,3 +18,13 @@
 - 📸 Profile picture upload support
 
 ---
+
+## 🛠️ Tech Stack
+
+**Frontend:**
+- HTML5, CSS3, JavaScript
+- React
+
+**Backend:**
+- Node.js
+- MySQL Database
