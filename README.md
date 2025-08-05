@@ -28,3 +28,7 @@
 **Backend:**
 - Node.js
 - MySQL Database
+
+**Output Screenshots:**
+
+![Output Image](output1.png)
